@@ -18,3 +18,8 @@ docker-up:
 
 docker-down:
 	docker-compose -f deploy/docker/docker-compose.yml down -v
+
+.PHONY: topic-check
+
+topic-check:
+	docker exec -it docker-kafka-1 /usr/bin/kafka-topics --describe --bootstrap-server kafka:9092
