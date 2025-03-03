@@ -32,11 +32,11 @@ func TestNewCustomerIdentity(t *testing.T) {
 	}
 
 	// Validate config values
-	assert.Equal(t, "cust123", ci.CustomerID(), "CustomerID mismatch")
-	assert.Equal(t, "550e8400-e29b-41d4-a716-446655440000", ci.BeaconID(), "BeaconID mismatch")
-	assert.Equal(t, "Table 3", ci.Location(), "Location mismatch")
-	assert.Equal(t, float32(0.95), ci.Confidence(), "Confidence mismatch")
-	assert.Equal(t, detectedAt, ci.DetectedAt(), "DetectedAt mismatch")
+	assert.Equal(t, "cust123", ci.GetCustomerID(), "CustomerID mismatch")
+	assert.Equal(t, "550e8400-e29b-41d4-a716-446655440000", ci.GetBeaconID(), "BeaconID mismatch")
+	assert.Equal(t, "Table 3", ci.GetLocation(), "Location mismatch")
+	assert.Equal(t, float32(0.95), ci.GetConfidence(), "Confidence mismatch")
+	assert.Equal(t, detectedAt, ci.GetDetectedAt(), "DetectedAt mismatch")
 
 	// Validate
 	err = ci.Validate()

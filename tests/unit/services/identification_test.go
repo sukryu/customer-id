@@ -80,10 +80,10 @@ func TestIdentifyCustomer(t *testing.T) {
 	}
 
 	// Validate results
-	assert.Equal(t, customerID, identity.CustomerID(), "CustomerID mismatch")
-	assert.Equal(t, "Table 3", identity.Location(), "Location mismatch")
-	assert.True(t, identity.Confidence() >= 0.8, "Confidence should be >= 0.8")
-	assert.WithinDuration(t, time.Now().UTC(), identity.DetectedAt(), time.Second, "DetectedAt mismatch")
+	assert.Equal(t, customerID, identity.GetCustomerID(), "CustomerID mismatch")
+	assert.Equal(t, "Table 3", identity.GetLocation(), "Location mismatch")
+	assert.True(t, identity.GetConfidence() >= 0.8, "Confidence should be >= 0.8")
+	assert.WithinDuration(t, time.Now().UTC(), identity.GetDetectedAt(), time.Second, "DetectedAt mismatch")
 }
 
 func TestIdentifyCustomerInactiveBeacon(t *testing.T) {
