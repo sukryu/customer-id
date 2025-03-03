@@ -1,0 +1,36 @@
+# Default configuration for tastesync-customer-id service
+server:
+  http_port: 3000          # HTTP server port
+  grpc_port: 50051         # gRPC server port
+  timeout: 5s              # Request timeout duration (e.g., "5s", "1m")
+
+redis:
+  host: "localhost:6379"   # Redis server address
+  password: ""             # Redis password (optional)
+  db: 0                    # Redis database number
+  max_retries: 3           # Maximum retry attempts for connection
+  pool_size: 10            # Connection pool size
+
+postgres:
+  host: "localhost:5432"   # PostgreSQL server address
+  user: "tastesync"        # Database user
+  password: "secret"       # Database password (overridden by env var in prod)
+  database: "tastesync"    # Database name
+  max_connections: 20      # Maximum number of connections
+  min_idle_connections: 5  # Minimum idle connections
+
+jwt:
+  private_key: "internal/config/keys/dev/private.pem"
+  public_key: "internal/config/keys/dev/public.pem"
+  expiration: 3600
+
+kafka:
+  broker: "localhost:9092" # Kafka broker address
+  topic: "customer-events" # Topic for publishing events
+  partition: 3             # Number of partitions
+  retry_backoff: 500ms     # Retry backoff duration (e.g., "500ms", "1s")
+
+logging:
+  level: "info"            # Log level (debug, info, warn, error)
+  output: "stdout"         # Log output (stdout, file path)
+  file_path: "logs/customer-id.log"  # Log file path (if output=file)
